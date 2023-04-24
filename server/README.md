@@ -13,6 +13,12 @@
 - Digital Ocean
 - Traefik
 
+```sh
+npm install --save-dev @types/node typescript ts-node nodemon
+npm install --save express body-parser dotenv mongoose graphql @apollo/server
+```
+
+
 ## GraphQL API
 - [GraphQL API](https://cphbusinessaps.dk/graphql)
 - Schema:
@@ -370,6 +376,7 @@ const resolvers = {
 
 module.exports = resolvers;
 ```
+
 ##### create User example
 ```typescript
 mutation {
@@ -874,17 +881,59 @@ const activityResolver = {
 };
 ```
 
-#### Query 
-```typescript
-
-
-
-
-
 ## How to run
 - `npm install`
 - `npm run dev`
 
+#### Random code snippets
+In this example, we define a Mongoose schema for Address and Person. We use the populate() method in the personSchema.post('save') middleware to automatically populate the address field with the actual Address document when we save a Person document. Instead of only storing the ObjectId of the address, we can now store the entire address document in the person document. The full Address object will be attached to the Person object automatically when you fetch it. This can save you the extra step of manually fetching the Address object separately, and can make your code cleaner and more efficient:
+
+```typescript
+import mongoose, { Schema } from 'mongoose';
+
+const addressSchema = new Schema({
+  street: String,
+  city: String,
+  state: String,
+  zip: String
+});
+
+const personSchema = new Schema({
+  name: String,
+  address: {
+    type: Schema.Types.ObjectId,
+    ref: 'Address'
+  }
+});
+
+personSchema.post('save', function(doc, next) {
+  this.populate({
+    path: 'address'
+  }).then(() => next());
+});
+
+const Address = mongoose.model('Address', addressSchema);
+const Person = mongoose.model('Person', personSchema);
+
+// Now you can create and save a person with an address:
+const address = new Address({
+  street: '123 Main St',
+  city: 'Anytown',
+  state: 'CA',
+  zip: '12345'
+});
+
+address.save().then(() => {
+  const person = new Person({
+    name: 'John Doe',
+    address: address._id
+  });
+
+  person.save().then(() => {
+    console.log('Person saved with address populated:', person);
+  });
+});
+```
 
 
 
