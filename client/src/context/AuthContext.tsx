@@ -10,11 +10,6 @@ import {
     LOAD_USER
 } from "../types/types.ts";
 
-const FAKE_USER = {
-    email: 'joerg@example.com',
-    password: 'qwerty',
-    role: 'student',
-};
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
@@ -86,7 +81,7 @@ const AuthProvider = ({children}: { children: ReactNode }) => {
 
     async function login(email: string, password: string) {
         dispatch({type: LOADING})
-
+        console.log(email, password)
         try {
             const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
@@ -96,7 +91,7 @@ const AuthProvider = ({children}: { children: ReactNode }) => {
                 body: JSON.stringify({email, password}),
             });
             const data = await response.json();
-            console.log(data)
+
             if (response.ok) {
                 dispatch({
                     type: LOGIN_SUCCESS,

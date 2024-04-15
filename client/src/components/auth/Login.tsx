@@ -10,7 +10,7 @@ import {useToast} from "../../context/ToastContext.tsx";
 import {useAuth} from "../../context/AuthContext.tsx";
 
 function Login() {
-    const [email, setEmail] = useState('joerg@example.com');
+    const [email, setEmail] = useState('thomas@example.com');
     const [password, setPassword] = useState('123456');
 
     const navigate = useNavigate();
