@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+    /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
+    .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 8px solid;
+        border-color: #000 #0000;
+        animation: s1 1s infinite;
+    }
+    @keyframes s1 {to{transform: rotate(.5turn)}}
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+

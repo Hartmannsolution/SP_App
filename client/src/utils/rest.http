@@ -1,0 +1,42 @@
+# Get Activity Data
+GET http://localhost:3000/activities
+
+###
+
+### Post Activity Data
+POST http://localhost:3001/activities
+Content-Type: application/json
+
+{
+  "name": "Activity 3",
+  "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
+  "sp": 30,
+  "comment": "Another Comment"
+}
+
+###
+
+# Patch Activity Data
+PUT http://localhost:3001/activities/2
+Content-Type: application/json
+
+{
+  "name": "Activity 2",
+  "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
+  "sp": 20,
+  "comment": ""
+}
+
+###
+
+# Get User Data
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "email": "joerg@example.com",
+  "password": "123456"
+}
+
+
+
