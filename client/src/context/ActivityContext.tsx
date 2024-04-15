@@ -1,18 +1,14 @@
 import {
-    GET_ACTIVITIES,
-    CLEAR_ERROR,
-    LOADING,
-    UPDATE_ACTIVITY,
-    REJECTED,
-    Activity,
+    ActivityType,
     ActivityStateType,
-    ActivityActionType, ActivityContextType
+    ActivityActionType, ActivityContextType, Activity
 } from '../types/types.ts';
 import React, {createContext, Dispatch, useContext, useEffect, useReducer} from "react";
+const {LOADING, UPDATE_ACTIVITY, GET_ACTIVITIES, REJECTED, CLEAR_ERROR} = Activity;
 
 const ActivityContext = createContext<ActivityContextType | null>(null);
 
-function reducer(
+    function reducer(
     state: ActivityStateType,
     action: ActivityActionType,
 ): ActivityStateType {
@@ -78,7 +74,7 @@ function ActivityProvider({children}: { children: React.ReactNode }) {
     }, []);
 
 
-    const addComment = async (activity: Activity, comment: string) => {
+    const addComment = async (activity: ActivityType, comment: string) => {
         try {
             const res = await fetch(`${BASE_URL}/${activity.id}`, {
                 method: 'PATCH',
@@ -88,9 +84,9 @@ function ActivityProvider({children}: { children: React.ReactNode }) {
                 body: JSON.stringify({...activity, comment}),
             });
             const data = await res.json();
-            dispatch({type: UPDATE_ACTIVITY, payload: data});
+            dispatch({type: Activity.UPDATE_ACTIVITY, payload: data});
         } catch (err: any) {
-            dispatch({type: REJECTED, payload: "Update Error!"});
+            dispatch({type: Activity.REJECTED, payload: "Update Error!"});
         }
     }
 

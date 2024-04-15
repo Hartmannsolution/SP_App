@@ -1,6 +1,7 @@
 import React, {Dispatch, useContext, useReducer} from "react";
-import {REMOVE_TOAST, SET_TOAST, ToastActionType, ToastContextType, ToastStateType} from "../types/types.ts";
+import {Toast, ToastActionType, ToastContextType, ToastStateType} from "../types/types.ts";
 import {v4 as uuidv4} from "uuid";
+const {SET_TOAST, REMOVE_TOAST} = Toast;
 
 const ToastContext = React.createContext<ToastContextType | undefined>(undefined);
 

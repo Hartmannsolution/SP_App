@@ -3,7 +3,7 @@ import Button from '../layout/Button.tsx';
 import {
     AuthContextType,
     ToastContextType,
-    ToastType,
+    ToastMsgTypes,
 } from '../../types/types.ts';
 import {useNavigate} from 'react-router-dom';
 import {useToast} from "../../context/ToastContext.tsx";
@@ -28,16 +28,16 @@ function Login() {
 
         if (isAuthenticated && user.role === 'admin') {
             navigate('/admin', {replace: true});
-            setToast('Welcome Admin', ToastType.SUCCESS);
+            setToast('Welcome Admin', ToastMsgTypes.SUCCESS);
         }
 
         if (isAuthenticated && user.role === 'student') {
             navigate('/student', {replace: true});
-            setToast('Welcome Student', ToastType.SUCCESS);
+            setToast('Welcome Student', ToastMsgTypes.SUCCESS);
         }
 
         if (error) {
-            setToast(error, ToastType.ERROR);
+            setToast(error, ToastMsgTypes.ERROR);
             clearError();
         }
     }, [isAuthenticated, navigate, user, error, setToast, clearError]);
@@ -84,7 +84,7 @@ function Login() {
                 </div>
 
                 <div className="flex items-center justify-center md:text-xl">
-                    <Button type="submit" text="Login"/>
+                    <Button type="submit">Login</Button>
                 </div>
             </form>
         </main>

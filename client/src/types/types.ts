@@ -1,25 +1,33 @@
 /***********************************
  *       Reducer Types             *
  ***********************************/
+export enum Auth {
+    LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+    LOGIN_FAIL = 'LOGIN_FAIL',
+    LOGOUT = 'LOGOUT',
+    LOAD_USER = 'LOAD_USER',
+    LOADING = 'LOADING',
+    CLEAR_ERROR = 'CLEAR_ERROR',
+}
 
-// Auth
-export const LOGOUT = 'LOGOUT';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'LOGIN_FAIL';
-export const LOAD_USER = 'LOAD_USER';
+export enum Toast {
+    SET_TOAST = 'SET_TOAST',
+    REMOVE_TOAST = 'REMOVE_TOAST',
+}
 
-// Toast
-export const SET_TOAST = 'SET_TOAST';
-export const REMOVE_TOAST = 'REMOVE_TOAST';
+export enum Activity {
+    GET_ACTIVITIES = 'ACTIVITIES',
+    UPDATE_ACTIVITY = 'UPDATE_ACTIVITY',
+    REJECTED = 'REJECTED',
+    CLEAR_ERROR = 'CLEAR_ERROR',
+    LOADING = 'LOADING',
+}
 
-// Activity
-export const GET_ACTIVITIES = 'ACTIVITIES';
-export const UPDATE_ACTIVITY = 'UPDATE_ACTIVITY';
-
-// Error - Loading
-export const REJECTED = 'REJECTED';
-export const LOADING = 'LOADING';
-export const CLEAR_ERROR = 'CLEAR_ERROR';
+export enum Error {
+    REJECTED = 'REJECTED',
+    LOADING = 'LOADING',
+    CLEAR_ERROR = 'CLEAR_ERROR',
+}
 
 /***********************************
  *           Auth Types             *
@@ -58,11 +66,11 @@ export type AuthActionType =
  ***********************************/
 
 export type ToastStateType = {
-    toasts: Toast[];
+    toasts: ToastType[];
 };
 
 export type ToastContextType = {
-    toasts: Toast[];
+    toasts: ToastType[];
     setToast: (msg: string, type: string, timeout?: number) => void;
 };
 
@@ -70,35 +78,35 @@ export type ToastActionType =
     | { type: 'SET_TOAST'; payload?: any }
     | { type: 'REMOVE_TOAST'; payload?: any };
 
-export type Toast = {
-    id: string;
-    msg: string;
-    type: string;
-};
-
-export enum ToastType {
+export enum ToastMsgTypes {
     SUCCESS = 'success',
     ERROR = 'error',
     INFO = 'info',
     LOADING = 'loading',
 }
 
+export type ToastType = {
+    id: string;
+    msg: string;
+    type: string;
+};
+
 /***********************************
  *           Activity Types          *
  ***********************************/
 
 export type ActivityStateType = {
-    activities: Activity[];
+    activities: ActivityType[];
     isLoading: boolean;
     error: any;
 };
 
 export type ActivityContextType = {
-    activities: Activity[];
+    activities: ActivityType[];
     isLoading: boolean;
     error: any;
     clearError: () => void;
-    addComment: (activity: Activity, comment: string) => void;
+    addComment: (activity: ActivityType, comment: string) => void;
 };
 
 export type ActivityActionType =
@@ -107,6 +115,14 @@ export type ActivityActionType =
     | { type: 'CLEAR_ERROR'; payload?: any }
     | { type: 'UPDATE_ACTIVITY'; payload?: any }
     | { type: 'LOADING'; payload?: any };
+
+export type ActivityType = {
+    id: number;
+    name: string;
+    desc: string;
+    sp: number;
+    comment: string;
+};
 
 /***********************************
  *           Student Types         *
@@ -128,10 +144,3 @@ export type StudentActionType = { type: 'TEST'; payload?: any };
  *           TS Types              *
  ***********************************/
 
-export type Activity = {
-    id: number;
-    name: string;
-    desc: string;
-    sp: number;
-    comment: string;
-};

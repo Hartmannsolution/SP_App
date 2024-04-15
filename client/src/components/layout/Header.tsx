@@ -4,7 +4,7 @@ import { FaClipboardList } from 'react-icons/fa';
 import {
   AuthContextType,
   ToastContextType,
-  ToastType,
+  ToastMsgTypes,
 } from '../../types/types.ts';
 import {useToast} from "../../context/ToastContext.tsx";
 import {useAuth} from "../../context/AuthContext.tsx";
@@ -15,7 +15,7 @@ function Header() {
 
   function logoutHandler() {
     logout();
-    setToast('You have been logged out', ToastType.INFO);
+    setToast('You have been logged out', ToastMsgTypes.INFO);
   }
 
 

@@ -1,15 +1,11 @@
 import {createContext, Dispatch, ReactNode, useContext, useReducer} from "react";
 import {
+    Auth,
     AuthActionType,
     AuthContextType,
     AuthStateType,
-    CLEAR_ERROR, LOADING,
-    LOGIN_FAIL,
-    LOGIN_SUCCESS,
-    LOGOUT,
-    LOAD_USER
 } from "../types/types.ts";
-
+const {LOADING, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, LOAD_USER, CLEAR_ERROR} = Auth;
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
@@ -42,6 +38,12 @@ const reducer = (state: AuthStateType, action: AuthActionType) => {
                 user: payload,
             };
         case LOGIN_FAIL:
+            return {
+                ...state,
+                isAuthenticated: false,
+                isLoading: false,
+                error: payload,
+            };
         case LOGOUT:
             localStorage.removeItem('token');
             localStorage.removeItem('user');
@@ -81,7 +83,7 @@ const AuthProvider = ({children}: { children: ReactNode }) => {
 
     async function login(email: string, password: string) {
         dispatch({type: LOADING})
-        console.log(email, password)
+
         try {
             const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',

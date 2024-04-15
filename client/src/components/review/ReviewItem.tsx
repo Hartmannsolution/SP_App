@@ -1,8 +1,8 @@
-import { Activity } from '../../types/types.ts';
+import { ActivityType } from '../../types/types.ts';
 import React from 'react';
 
 type AccordionItemProps = {
-  activity: Activity;
+  activity: ActivityType;
   curOpen: number | null;
   onOpen: (num: number | null) => void;
   title: string;

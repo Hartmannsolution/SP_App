@@ -1,10 +1,10 @@
 import React from "react";
 import Button from '../layout/Button.tsx';
 import {useActivity} from "../../context/ActivityContext.tsx";
-import {Activity, ActivityContextType} from '../../types/types.ts';
+import {ActivityType, ActivityContextType} from '../../types/types.ts';
 
 type AccordionBoxProps = {
-    activity: Activity;
+    activity: ActivityType;
     onOpen: (id: number | null) => void;
 };
 
@@ -50,7 +50,7 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
                 />
             </div>
             <div>
-                <Button text="Submit" handler={clickHandler} width="100px"/>
+                <Button handler={clickHandler} width="100px">Submit</Button>
             </div>
         </div>
     );

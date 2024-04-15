@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToastContextType } from '../../types/types.ts';
-import { ToastType } from '../../types/types.ts';
+import { ToastMsgTypes } from '../../types/types.ts';
 import {
   FcHighPriority as ErrorIcon,
   FcApproval as SuccessIcon,
@@ -15,13 +15,13 @@ const Toast = () => {
 
   const toastType = (type: string) => {
     switch (type) {
-      case ToastType.ERROR:
+      case ToastMsgTypes.ERROR:
         return 'bg-red-700';
-      case ToastType.SUCCESS:
+      case ToastMsgTypes.SUCCESS:
         return 'bg-green-600';
-      case ToastType.INFO:
+      case ToastMsgTypes.INFO:
         return 'bg-blue-800';
-      case ToastType.LOADING:
+      case ToastMsgTypes.LOADING:
         return 'bg-blue-600';
       default:
         return 'bg-blue-600';
@@ -30,13 +30,13 @@ const Toast = () => {
 
   const toastIcon = (type: string) => {
     switch (type) {
-      case ToastType.ERROR:
+      case ToastMsgTypes.ERROR:
         return <ErrorIcon size={34} className="animate-pulse" />;
-      case ToastType.SUCCESS:
+      case ToastMsgTypes.SUCCESS:
         return <SuccessIcon size={34} className="animate-ping" />;
-      case ToastType.INFO:
+      case ToastMsgTypes.INFO:
         return <InfoIcon size={34} className="animate-pulse" />;
-      case ToastType.LOADING:
+      case ToastMsgTypes.LOADING:
         return <LoadingIcon size={34} className="animate-spin" />;
       default:
         return <InfoIcon size={34} />;
