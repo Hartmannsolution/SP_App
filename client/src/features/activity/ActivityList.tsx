@@ -1,7 +1,7 @@
 import ActivityItem from './ActivityItem.tsx';
 import React, { useState } from 'react';
 import { ActivityContextType, ToastContextType } from '../../types/types.ts';
-import Loader from '../layout/Loader.tsx';
+import Loader from '../../layout/Loader.tsx';
 import {useActivity} from '../../context/ActivityContext.tsx';
 import {useToast} from "../../context/ToastContext.tsx";
 

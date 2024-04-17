@@ -5,9 +5,9 @@ import {
   AuthContextType,
   ToastContextType,
   ToastMsgTypes,
-} from '../../types/types.ts';
-import {useToast} from "../../context/ToastContext.tsx";
-import {useAuth} from "../../context/AuthContext.tsx";
+} from '../types/types.ts';
+import {useToast} from "../context/ToastContext.tsx";
+import {useAuth} from "../context/AuthContext.tsx";
 
 function Header() {
   const { logout, isAuthenticated} = useAuth() as AuthContextType;

@@ -1,7 +1,7 @@
 import {useState} from "react";
-import StatusHeader from "../status/StatusHeader.tsx";
-import CommentBox from "../status/CommentBox.tsx";
-import SpBox from "../status/SpBox.tsx";
+import StatusHeader from "../features/status/StatusHeader.tsx";
+import CommentBox from "../features/status/CommentBox.tsx";
+import SpBox from "../features/status/SpBox.tsx";
 
 const listOfChosenActivities = [
     {

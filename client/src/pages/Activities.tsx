@@ -1,6 +1,6 @@
 import Selector from "../layout/Selector.tsx";
-import ActivityList from "../activity/ActivityList.tsx";
-import ActivityHeader from "../activity/ActivityHeader.tsx";
+import ActivityList from "../features/activity/ActivityList.tsx";
+import ActivityHeader from "../features/activity/ActivityHeader.tsx";
 
 const session_options = [
     {value: 'session 1', label: 'session 1', id: 'session'},

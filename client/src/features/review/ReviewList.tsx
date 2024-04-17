@@ -2,7 +2,7 @@ import ReviewItem from './ReviewItem.tsx';
 import React, {useEffect, useState} from 'react';
 import {ActivityContextType, ToastContextType} from '../../types/types.ts';
 import ReviewBox from './ReviewBox.tsx';
-import Loader from '../layout/Loader.tsx';
+import Loader from '../../layout/Loader.tsx';
 import {useToast} from "../../context/ToastContext.tsx";
 import {useActivity} from "../../context/ActivityContext.tsx";
 

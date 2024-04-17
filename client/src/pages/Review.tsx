@@ -1,6 +1,6 @@
-import ReviewList from '../review/ReviewList.tsx';
+import ReviewList from '../features/review/ReviewList.tsx';
 import Selector from '../layout/Selector.tsx';
-import ReviewHeader from "../review/ReviewHeader.tsx";
+import ReviewHeader from "../features/review/ReviewHeader.tsx";
 
 const group_options = [
     {value: 'group 1', label: 'group 1', id: 'group'},

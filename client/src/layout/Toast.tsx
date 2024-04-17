@@ -1,13 +1,13 @@
 import React from 'react';
-import { ToastContextType } from '../../types/types.ts';
-import { ToastMsgTypes } from '../../types/types.ts';
+import { ToastContextType } from '../types/types.ts';
+import { ToastMsgTypes } from '../types/types.ts';
 import {
   FcHighPriority as ErrorIcon,
   FcApproval as SuccessIcon,
   FcAbout as InfoIcon,
   FcSynchronize as LoadingIcon,
 } from 'react-icons/fc';
-import {useToast} from "../../context/ToastContext.tsx";
+import {useToast} from "../context/ToastContext.tsx";
 
 
 const Toast = () => {

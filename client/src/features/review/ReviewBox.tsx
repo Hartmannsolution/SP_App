@@ -1,5 +1,5 @@
 import React from "react";
-import Button from '../layout/Button.tsx';
+import Button from '../../layout/Button.tsx';
 import {useActivity} from "../../context/ActivityContext.tsx";
 import {ActivityType, ActivityContextType} from '../../types/types.ts';
 
