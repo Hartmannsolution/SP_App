@@ -34,16 +34,16 @@ export enum Error {
  ***********************************/
 
 export type AuthStateType = {
-    isAuthenticated: boolean | null;
     token: string | null;
+    isAuthenticated: boolean | null;
+    user: null | User;
     isLoading: boolean;
     error: any;
-    user: any;
 };
 
 export type AuthContextType = {
     isAuthenticated: boolean | null;
-    user: any;
+    user: User | null;
     error: any;
     token: string | null;
     isLoading: boolean;
@@ -54,12 +54,12 @@ export type AuthContextType = {
 };
 
 export type AuthActionType =
-    | { type: 'LOGIN_SUCCESS'; payload?: any }
+    | { type: 'LOGIN_SUCCESS'; payload?: any}
+    | { type: 'LOAD_USER'; payload?: any}
     | { type: 'LOGIN_FAIL'; payload?: any }
     | { type: 'LOGOUT'; payload?: any }
     | { type: 'CLEAR_ERROR'; payload?: any }
     | { type: 'LOADING'; payload?: any }
-    | { type: 'LOAD_USER'; payload?: any };
 
 /***********************************
  *           Toast Types           *
@@ -144,3 +144,8 @@ export type StudentActionType = { type: 'TEST'; payload?: any };
  *           TS Types              *
  ***********************************/
 
+type User = {
+    email: string;
+    password?: string;
+    role: string;
+};

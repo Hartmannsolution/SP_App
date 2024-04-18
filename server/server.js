@@ -61,7 +61,6 @@ const login = async (req, res, next) => {
 
     // 2) check if user exists && password is correct
     const user = await fetchUser(id)
-    console.log("USER: ", user)
 
     if (!user || !(password === user.password)) {
         return next(new AppError('Incorrect email or password', 404));

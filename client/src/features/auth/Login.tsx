@@ -24,14 +24,14 @@ function Login() {
 
     useEffect(() => {
 
-        verifyToken();
+         verifyToken();
 
-        if (isAuthenticated && user.role === 'admin') {
+        if (isAuthenticated && user!.role === 'admin') {
             navigate('/admin', {replace: true});
             setToast('Welcome Admin', ToastMsgTypes.SUCCESS);
         }
 
-        if (isAuthenticated && user.role === 'student') {
+        if (isAuthenticated && user!.role === 'student') {
             navigate('/student', {replace: true});
             setToast('Welcome Student', ToastMsgTypes.SUCCESS);
         }

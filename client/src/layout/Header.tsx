@@ -15,7 +15,7 @@ function Header() {
 
   function logoutHandler() {
     logout();
-    setToast('You have been logged out', ToastMsgTypes.INFO);
+    setToast('Logged out', ToastMsgTypes.INFO);
   }
 
 

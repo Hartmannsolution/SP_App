@@ -66,7 +66,7 @@ const reducer = (state: AuthStateType, action: AuthActionType) => {
 
 const AuthProvider = ({children}: { children: ReactNode }) => {
     const initialState = {
-        token: localStorage.getItem('token'),
+        token: localStorage.getItem('token') || null,
         isAuthenticated: false,
         user: null,
         isLoading: true,
@@ -149,10 +149,10 @@ const AuthProvider = ({children}: { children: ReactNode }) => {
                 isAuthenticated,
                 user,
                 error,
+                isLoading,
+                token,
                 login,
                 logout,
-                token,
-                isLoading,
                 clearError,
                 verifyToken
             }}

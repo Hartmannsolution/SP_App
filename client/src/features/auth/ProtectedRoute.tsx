@@ -1,27 +1,22 @@
-import React, {useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React from "react";
+import {Navigate} from 'react-router-dom';
 import {AuthContextType} from '../../types/types.ts';
 import {useAuth} from "../../context/AuthContext.tsx";
 
+
 type ProtectedRouteProps = {
     role: string;
-    children: React.ReactNode;
+    redirect: string;
+    element: React.ReactNode;
 };
 
-function ProtectedRoute({role, children}: ProtectedRouteProps) {
-    const {isAuthenticated, user} = useAuth() as AuthContextType;
-    const navigate = useNavigate();
-    const hasRole = user && user.role === role;
+const ProtectedRoute = ({ redirect, element, role}: ProtectedRouteProps) => {
+    const {isAuthenticated, user } = useAuth() as AuthContextType;
 
+    if(!user) return <Navigate to="/" />;
 
-    useEffect(
-        function () {
-            if (!isAuthenticated || !hasRole) navigate('/');
-        },
-        [isAuthenticated, navigate, hasRole],
-    );
-
-    return isAuthenticated && hasRole ? children : null;
-}
+    return !isAuthenticated && role !== user!.role ? <Navigate to={redirect} /> : element;
+};
 
 export default ProtectedRoute;
+

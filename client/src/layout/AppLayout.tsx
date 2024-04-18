@@ -1,14 +1,20 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import PageNav from './PageNav.tsx';
+import {Outlet} from 'react-router-dom';
+import Toast from "./Toast.tsx";
+import Footer from "./Footer.tsx";
+import Header from "./Header.tsx";
 
-function AppLayout({ role }: { role: string }) {
-  return (
-    <div className="overflow">
-      <PageNav role={role} />
-      <Outlet />
-    </div>
-  );
+function AppLayout() {
+    return (
+        <div className="overflow">
+            <Header/>
+            <main>
+                <Outlet/>
+            </main>
+            <Toast/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default AppLayout;
