@@ -30,7 +30,7 @@ function Review() {
                 <Selector options={student_options}/>
             </div>
 
-            <div className="flex flex-col ">
+            <div className="flex flex-col items-center">
                 <ReviewHeader/>
                 <ReviewList/>
             </div>

@@ -1,7 +1,6 @@
 import React from "react";
-import Button from '../../layout/Button.tsx';
 import {useActivity} from "../../context/ActivityContext.tsx";
-import {ActivityType, ActivityContextType} from '../../types/types.ts';
+import {ActivityContextType, ActivityType} from '../../types/types.ts';
 
 type AccordionBoxProps = {
     activity: ActivityType;
@@ -21,39 +20,33 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
     }
 
     return (
-        <div>
-            <div className="mb-4 flex gap-8">
-                <p className="font-bold">Name:</p>
-                <p className="">{activity.name}</p>
+        <>
+            <p className="col-span-1 row-start-1 self-center max-w-32 text-gray-950 font-bold text-xl">Name:</p>
+            <p className="col-span-1 row-start-2 max-w-32 text-gray-950 font-bold text-xl">Description:</p>
+            <p className="col-span-1 row-start-3 self-center max-w-32 text-gray-950 font-bold text-xl">SP:</p>
+            <p className="col-span-1 row-start-4 max-w-32 text-gray-950 font-bold text-xl">Comment:</p>
+
+            <p className="col-span-4 row-end-2 self-center">{activity.name}</p>
+            <p className="col-span-4 row-end-3">{activity.desc}</p>
+            <input
+                type="text"
+                placeholder={String(activity.sp)}
+                className="col-span-1 row-end-4 self-center focus:shadow-outline w-[50px] h-[50px] appearance-none rounded border px-3 py-2 text-center leading-tight text-gray-700 shadow focus:outline-none"
+            />
+            <textarea
+                ref={refComment}
+                aria-placeholder="Comment"
+                defaultValue={activity.comment && activity.comment}
+                cols={20}
+                placeholder={activity.comment}
+                className="col-span-4 row-start-4 row-end-6 focus:shadow-outline appearance-none rounded border p-2 leading-tight shadow focus:outline-none"
+            />
+            <div className="col-start-1 row-start-5">
+                <button className="h-14 w-20 bg-blue-700 rounded-xl text-blue-50 font-bold text-lg" onClick={clickHandler}>Submit</button>
             </div>
-            <div className="mb-4 flex justify-start gap-4 break-words">
-                <p className="font-bold">Activity:</p>
-                <p className="leading-8">{activity.desc}</p>
-            </div>
-            <div className="mb-6 flex items-center justify-start gap-14">
-                <p className="font-bold">SP:</p>
-                <input
-                    type="text"
-                    placeholder={String(activity.sp)}
-                    className="focus:shadow-outline w-[50px] appearance-none rounded border px-3 py-2 text-center leading-tight text-gray-700 shadow focus:outline-none"
-                />
-            </div>
-            <div className="">
-                <p className="mb-2 font-bold">Comment:</p>
-                <textarea
-                    ref={refComment}
-                    aria-placeholder="Comment"
-                    defaultValue={activity.comment && activity.comment}
-                    cols={20}
-                    placeholder={activity.comment}
-                    className="focus:shadow-outline mb-6 appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
-                />
-            </div>
-            <div>
-                <Button handler={clickHandler} width="100px">Submit</Button>
-            </div>
-        </div>
+        </>
     );
+
 }
 
 export default ReviewBox;
