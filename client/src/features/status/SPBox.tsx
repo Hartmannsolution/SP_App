@@ -1,4 +1,4 @@
-function SpBox({currentSp = 1, maxSp = 100}: { currentSp: number, maxSp: number }) {
+function SPBox({currentSp = 1, maxSp = 100}: { currentSp: number, maxSp: number }) {
     return (
         <div className="font-bold mr-4 text-lg w-[10rem] text-center text-blue-800 border-4 p-1 border-blue-800 ">
             <p className="">SP: <span
@@ -8,4 +8,4 @@ function SpBox({currentSp = 1, maxSp = 100}: { currentSp: number, maxSp: number 
     )
 }
 
-export default SpBox;
+export default SPBox;
