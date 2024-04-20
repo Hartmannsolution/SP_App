@@ -3,10 +3,13 @@ import StatusHeader from "../features/status/StatusHeader.tsx";
 import CommentBox from "../features/status/CommentBox.tsx";
 import SPBox from "../features/status/SPBox.tsx";
 import StatusList from "../features/status/StatusList.tsx";
+import {useActivity} from "../context/ActivityContext.tsx";
+import {ActivityContextType} from "../types/types.ts";
 
 
 function Status() {
 
+    const {activities} = useActivity() as ActivityContextType;
     const [selectedActivityId, setSelectedActivityId] = useState<null | number>(null);
     const [comment, setComment] = useState("");
 
@@ -20,11 +23,11 @@ function Status() {
         <div>
             <div className="flex items-center justify-center gap-5 my-8 md:justify-between md:ml-20 md:mr-20">
                 <h1 className="text-2xl font-bold text-blue-800 ml-4">Class Name</h1>
-                <SPBox currentSp={50} maxSp={100}/>
+                <SPBox activities={activities}/>
             </div>
             <div className="mb-14">
                 <StatusHeader />
-                <StatusList activityHandler={activityHandler}/>
+                <StatusList activities={activities} activityHandler={activityHandler}/>
             </div>
 
             {

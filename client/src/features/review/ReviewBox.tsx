@@ -1,9 +1,7 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import {useActivity} from "../../context/ActivityContext.tsx";
 import {ActivityContextType, ActivityType} from '../../types/types.ts';
-import Quill from "quill";
 import Editor from "./Editor.tsx";
-const Delta = Quill.import('delta');
 
 
 type AccordionBoxProps = {
@@ -14,20 +12,20 @@ type AccordionBoxProps = {
 function ReviewBox({activity, onOpen}: AccordionBoxProps) {
 
     const {addComment} = useActivity() as ActivityContextType;
-    const refComment = React.useRef<HTMLTextAreaElement>(null);
+    const [editor, setEditor] = useState(activity.comment || "");
+
 
     function clickHandler() {
-        if (refComment.current) {
-            addComment(activity, refComment.current.value);
-            onOpen(null);
-        }
+
+        if (!editor || !activity.id) return;
+
+        addComment(activity.id, editor);
+        onOpen(null);
     }
 
-    const [range, setRange] = useState();
-    const [lastChange, setLastChange] = useState();
-    const [readOnly, setReadOnly] = useState(false);
-    const quillRef = useRef();
-
+    function onChangeHandler(value: string) {
+        setEditor(value);
+    }
 
     return (
         <>
@@ -44,13 +42,7 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
                 className="col-span-1 row-end-4 self-center focus:shadow-outline w-[50px] h-[50px] appearance-none rounded border px-3 py-2 text-center leading-tight text-gray-700 shadow focus:outline-none"
             />
             <div className="col-span-4 row-start-4 row-end-6">
-            <Editor
-                ref={quillRef}
-                readOnly={readOnly}
-                defaultValue={activity.comment && activity.comment}
-                onSelectionChange={setRange}
-                onTextChange={setLastChange}
-            />
+                <Editor onChangeHandler={onChangeHandler} value={editor}/>
             </div>
             {/*<textarea*/}
             {/*    ref={refComment}*/}
@@ -61,7 +53,9 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
             {/*    className="col-span-4 row-start-4 row-end-6 focus:shadow-outline appearance-none rounded border p-2 leading-tight shadow focus:outline-none"*/}
             {/*/>*/}
             <div className="col-start-1 row-start-5">
-                <button className="h-14 w-20 bg-blue-700 rounded-xl text-blue-50 font-bold text-lg" onClick={clickHandler}>Submit</button>
+                <button className="h-14 w-20 bg-blue-700 rounded-xl text-blue-50 font-bold text-lg"
+                        onClick={clickHandler}>Submit
+                </button>
             </div>
         </>
     );

@@ -106,7 +106,7 @@ export type ActivityContextType = {
     isLoading: boolean;
     error: any;
     clearError: () => void;
-    addComment: (activity: ActivityType, comment: string) => void;
+    addComment: (activity: number, comment: string) => void;
 };
 
 export type ActivityActionType =
@@ -122,7 +122,15 @@ export type ActivityType = {
     desc: string;
     sp: number;
     comment: string;
+    status: Status;
+    date: string;
 };
+
+enum Status {
+    COMPLETED = 'completed',
+    PENDING = 'pending',
+    REJECTED = 'rejected',
+}
 
 /***********************************
  *           Student Types         *

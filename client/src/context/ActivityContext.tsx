@@ -1,14 +1,11 @@
-import {
-    ActivityType,
-    ActivityStateType,
-    ActivityActionType, ActivityContextType, Activity
-} from '../types/types.ts';
+import {Activity, ActivityActionType, ActivityContextType, ActivityStateType} from '../types/types.ts';
 import React, {createContext, Dispatch, useContext, useEffect, useReducer} from "react";
+
 const {LOADING, UPDATE_ACTIVITY, GET_ACTIVITIES, REJECTED, CLEAR_ERROR} = Activity;
 
 const ActivityContext = createContext<ActivityContextType | null>(null);
 
-    function reducer(
+function reducer(
     state: ActivityStateType,
     action: ActivityActionType,
 ): ActivityStateType {
@@ -30,11 +27,11 @@ const ActivityContext = createContext<ActivityContextType | null>(null);
             return {
                 ...state,
                 activities: state.activities.map((activity) =>
-                    activity.id === payload.id ? payload : activity,
+                    activity.id === payload.id ? {...activity, comment: payload.comment} : activity,
                 ),
                 isLoading: false,
                 error: null,
-            };
+            } as ActivityStateType;
         case REJECTED:
             return {
                 ...state,
@@ -56,7 +53,11 @@ const BASE_URL = 'http://localhost:3000/activities';
 function ActivityProvider({children}: { children: React.ReactNode }) {
     const initialState = {activities: [], error: null, isLoading: true};
 
-    const [{activities, error, isLoading}, dispatch]: [ActivityStateType, Dispatch<ActivityActionType>] = useReducer(reducer, initialState);
+    const [{
+        activities,
+        error,
+        isLoading
+    }, dispatch]: [ActivityStateType, Dispatch<ActivityActionType>] = useReducer(reducer, initialState);
 
     useEffect(() => {
         const fetchActivities = async () => {
@@ -69,22 +70,22 @@ function ActivityProvider({children}: { children: React.ReactNode }) {
                 dispatch({type: REJECTED, payload: "Can't fetch activities"});
             }
         };
-        // simulate loading
-        setTimeout(fetchActivities, 1000);
+        fetchActivities()
     }, []);
 
 
-    const addComment = async (activity: ActivityType, comment: string) => {
+    const addComment = async (activityID: number, comment: string) => {
         try {
-            const res = await fetch(`${BASE_URL}/${activity.id}`, {
+            const res = await fetch(`${BASE_URL}/${activityID}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-type': 'application/json',
                 },
-                body: JSON.stringify({...activity, comment}),
+                body: JSON.stringify({comment}),
             });
             const data = await res.json();
-            dispatch({type: Activity.UPDATE_ACTIVITY, payload: data});
+
+            dispatch({type: Activity.UPDATE_ACTIVITY, payload: {id: data.activity.id, comment: data.activity.comment}});
         } catch (err: any) {
             dispatch({type: Activity.REJECTED, payload: "Update Error!"});
         }

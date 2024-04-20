@@ -1,9 +1,19 @@
-function SPBox({currentSp = 1, maxSp = 100}: { currentSp: number, maxSp: number }) {
+import {ActivityType} from "../../types/types.ts";
+
+function SPBox({activities = []}: { activities: ActivityType[]}) {
+
+    function cleanUpNumber(num: number) {
+        if(num < 0) return "00";
+        return num < 10 ? "0" + num : num;
+    }
+
+    const maxSp = cleanUpNumber(activities.reduce((acc, activity) => acc + activity.sp, 0));
+    const currentSp = cleanUpNumber(activities.filter(activity => activity.status === "completed").reduce((acc, activity) => acc + activity.sp, 0));
+
+
     return (
-        <div className="font-bold mr-4 text-lg w-[10rem] text-center text-blue-800 border-4 p-1 border-blue-800 ">
-            <p className="">SP: <span
-                className="p-2 m-2">{currentSp < 10 ? "0" + currentSp : currentSp} / {maxSp < 10 ? "0" + maxSp : maxSp}</span>
-            </p>
+        <div className="font-bold text-xl w-[12rem] text-center text-blue-800">
+            <p className="">SP: <span className="p-2 m-2"><span className={`${currentSp !== maxSp ? "text-red-600" : "text-green-700"} `}>{currentSp}</span> / {maxSp}</span></p>
         </div>
     )
 }
