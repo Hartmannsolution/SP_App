@@ -106,7 +106,7 @@ export type ActivityContextType = {
     isLoading: boolean;
     error: any;
     clearError: () => void;
-    addComment: (activity: number, comment: string) => void;
+    addComment: (activity: number, comment: string, status: string) => void;
 };
 
 export type ActivityActionType =
@@ -122,12 +122,12 @@ export type ActivityType = {
     desc: string;
     sp: number;
     comment: string;
-    status: Status;
+    status: ReviewStatus;
     date: string;
 };
 
-enum Status {
-    COMPLETED = 'completed',
+export enum ReviewStatus {
+    APPROVED = 'approved',
     PENDING = 'pending',
     REJECTED = 'rejected',
 }

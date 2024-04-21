@@ -1,4 +1,4 @@
-import {ActivityType} from "../../types/types.ts";
+import {ActivityType, ReviewStatus} from "../../types/types.ts";
 
 function SPBox({activities = []}: { activities: ActivityType[]}) {
 
@@ -8,7 +8,7 @@ function SPBox({activities = []}: { activities: ActivityType[]}) {
     }
 
     const maxSp = cleanUpNumber(activities.reduce((acc, activity) => acc + activity.sp, 0));
-    const currentSp = cleanUpNumber(activities.filter(activity => activity.status === "completed").reduce((acc, activity) => acc + activity.sp, 0));
+    const currentSp = cleanUpNumber(activities.filter(activity => activity.status === ReviewStatus.APPROVED).reduce((acc, activity) => acc + activity.sp, 0));
 
 
     return (

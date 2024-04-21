@@ -2,15 +2,18 @@ import express from 'express';
 import {AppError} from "./appError.js";
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
+import morgan from 'morgan';
 
 
 const app = express();
+
+app.use(morgan('dev'));
 app.use(cors("*"));
 app.use(express.json({ limit: '10kb' }));
 
 const signToken = (id) =>
     jwt.sign({ id: id }, "Tay3M69s*!G7%*uK@2xqB8Ug*9JR&R@BBb69pzCf", {
-        expiresIn:"90d",
+        expiresIn:"1h",
     });
 
 const createAndSendToken = (user, statusCode, res) => {
@@ -37,17 +40,6 @@ const createAndSendToken = (user, statusCode, res) => {
     });
 };
 
-const fetchUser = async (id) => {
-    const res = await fetch(`http://localhost:3001/users/${id}`)
-    return await res.json()
-};
-
-const fetchActivities = async () => {
-    const res = await fetch(`http://localhost:3001/activities`)
-    return await res.json()
-}
-
-
 const login = async (req, res, next) => {
     // From user login
     const { email, password } = req.body;
@@ -71,17 +63,46 @@ const login = async (req, res, next) => {
     createAndSendToken(user, 200, res);
 };
 
+const fetchUser = async (id) => {
+    const res = await fetch(`http://localhost:3001/users/${id}`)
+    return await res.json()
+};
+
+const fetchActivities = async () => {
+    const res = await fetch(`http://localhost:3001/activities`)
+    return await res.json()
+}
+
+const addCommentToActivity = async (id, comment, status) => {
+    const res = await fetch(`http://localhost:3001/activities/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ comment, status }),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    return await res.json()
+}
+
 const activities = async (req, res, next) => {
     const activities = await fetchActivities()
     res.status(200).json({
         status: 'succes',
         data: activities,
     });
-
 }
 
-app.use('/login', login);
-app.use('/activities', activities);
+
+app.post('/login', login);
+app.get('/activities', activities);
+app.patch('/activities/:id', async (req, res, next) => {
+    const { id } = req.params;
+    const { comment, status } = req.body;
+
+    const activity = await addCommentToActivity(id, comment, status)
+    res.status(200).json({
+        status: 'succes',
+        activity,
+    });
+});
 
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

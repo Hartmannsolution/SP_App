@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useActivity} from "../../context/ActivityContext.tsx";
-import {ActivityContextType, ActivityType} from '../../types/types.ts';
+import {ActivityContextType, ActivityType, ReviewStatus} from '../../types/types.ts';
 import Editor from "./Editor.tsx";
 
 
@@ -15,11 +15,15 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
     const [editor, setEditor] = useState(activity.comment || "");
 
 
-    function clickHandler() {
+    function clickHandler(choice: number) {
 
         if (!editor || !activity.id) return;
 
-        addComment(activity.id, editor);
+        if (choice === 0) {
+            addComment(activity.id, editor, ReviewStatus.APPROVED);
+        } else {
+            addComment(activity.id, editor, ReviewStatus.REJECTED);
+        }
         onOpen(null);
     }
 
@@ -29,33 +33,30 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
 
     return (
         <>
-            <p className="col-span-1 row-start-1 self-center max-w-32 text-gray-950 font-bold text-xl">Name:</p>
-            <p className="col-span-1 row-start-2 max-w-32 text-gray-950 font-bold text-xl">Description:</p>
-            <p className="col-span-1 row-start-3 self-center max-w-32 text-gray-950 font-bold text-xl">SP:</p>
-            <p className="col-span-1 row-start-4 max-w-32 text-gray-950 font-bold text-xl">Comment:</p>
+            <p className="col-span-1 row-start-1 pl-2 max-w-32 text-sm text-gray-950 font-bold md:text-xl">Desc:</p>
+            <p className="col-span-1 row-start-2 pl-2 self-center text-sm max-w-32 text-gray-950 font-bold md:text-xl">SP:</p>
+            <p className="col-span-1 row-start-3 pl-2 max-w-32 text-sm text-gray-950 font-bold md:text-xl">Comment:</p>
 
-            <p className="col-span-4 row-end-2 self-center">{activity.name}</p>
-            <p className="col-span-4 row-end-3">{activity.desc}</p>
+            <p className="col-span-4 row-end-2 pl-4 md:pl-2 text-sm tracking-wide mb-2 md:text-xl">{activity.desc}</p>
             <input
                 type="text"
                 placeholder={String(activity.sp)}
-                className="col-span-1 row-end-4 self-center focus:shadow-outline w-[50px] h-[50px] appearance-none rounded border px-3 py-2 text-center leading-tight text-gray-700 shadow focus:outline-none"
+                className="col-span-1 row-end-3 ml-4 md:ml-2 self-center focus:shadow-outline text-sm w-[40px] h-[40px] md:w-[60px] md:h-[60px] md:text-xl rounded border px-3 py-2 text-center shadow focus:outline-none"
             />
-            <div className="col-span-4 row-start-4 row-end-6">
+            <div className="col-span-4 row-start-3 row-end-5 pl-4 md:pl-2">
                 <Editor onChangeHandler={onChangeHandler} value={editor}/>
             </div>
-            {/*<textarea*/}
-            {/*    ref={refComment}*/}
-            {/*    aria-placeholder="Comment"*/}
-            {/*    defaultValue={activity.comment && activity.comment}*/}
-            {/*    cols={20}*/}
-            {/*    placeholder={activity.comment}*/}
-            {/*    className="col-span-4 row-start-4 row-end-6 focus:shadow-outline appearance-none rounded border p-2 leading-tight shadow focus:outline-none"*/}
-            {/*/>*/}
-            <div className="col-start-1 row-start-5">
-                <button className="h-14 w-20 bg-blue-700 rounded-xl text-blue-50 font-bold text-lg"
-                        onClick={clickHandler}>Submit
+            <div className="col-start-2 col-span-3 row-start-5 place-self-center">
+                <div className="flex flex-row gap-2">
+                <button
+                    className="h-10 w-[70px] md:h-14 md:w-24 bg-green-600 rounded-xl text-blue-50 font-bold text-sm md:text-lg"
+                    onClick={() => clickHandler(0)}>Approve
                 </button>
+                <button
+                    className="h-10 w-[70px] md:h-14 md:w-24 bg-red-600 rounded-xl text-blue-50 font-bold text-sm md:text-lg"
+                    onClick={() => clickHandler(1)}>Reject
+                </button>
+                </div>
             </div>
         </>
     );

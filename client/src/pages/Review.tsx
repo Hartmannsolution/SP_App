@@ -23,8 +23,9 @@ const session_options = [
 function Review() {
     return (
 
-        <div className="flex flex-col items-center gap-10 mt-10 md:flex-row md:gap-60 md:mt-40 md:items-start md:justify-center">
-            <div className="flex flex-col items-center gap-2">
+        <div
+            className="flex flex-col items-center gap-10 mt-10 md:flex-row md:gap-48 md:mt-40 md:items-start md:justify-center">
+            <div className="flex flex-col items-center gap-2 md:gap-4">
                 <Selector options={session_options}/>
                 <Selector options={group_options}/>
                 <Selector options={student_options}/>

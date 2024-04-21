@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityType} from "../../types/types.ts";
+import {ActivityType, ReviewStatus} from "../../types/types.ts";
 import {FcHighPriority, FcOk} from "react-icons/fc";
 
 
@@ -16,10 +16,10 @@ const StatusList = ({activityHandler, activities}: {activities: ActivityType[], 
                         <p className="p-2 col-span-3">{activity.date}</p>
                         <p className="p-2 col-span-1">{activity.sp}</p>
                         {
-                            activity.status === "completed" ?
+                            activity.status === ReviewStatus.APPROVED ?
                                 <FcOk className="col-span-1 self-center justify-self-end mr-2 w-6 h-6 md:w-8 md:h-8"/>
                                 :
-                            activity.status === "rejected" ?
+                            activity.status === ReviewStatus.REJECTED ?
                                 <FcHighPriority className="col-span-1 self-center justify-self-end mr-2 w-6 h-6 md:w-8 md:h-8"/>
                                 :
                                 ""

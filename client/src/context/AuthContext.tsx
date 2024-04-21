@@ -38,6 +38,8 @@ const reducer = (state: AuthStateType, action: AuthActionType) => {
                 user: payload,
             };
         case LOGIN_FAIL:
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
             return {
                 ...state,
                 isAuthenticated: false,

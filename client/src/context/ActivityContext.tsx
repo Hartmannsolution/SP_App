@@ -27,7 +27,11 @@ function reducer(
             return {
                 ...state,
                 activities: state.activities.map((activity) =>
-                    activity.id === payload.id ? {...activity, comment: payload.comment} : activity,
+                    activity.id === payload.id ? {
+                        ...activity,
+                        comment: payload.comment,
+                        status: payload.status
+                    } : activity,
                 ),
                 isLoading: false,
                 error: null,
@@ -74,18 +78,21 @@ function ActivityProvider({children}: { children: React.ReactNode }) {
     }, []);
 
 
-    const addComment = async (activityID: number, comment: string) => {
+    const addComment = async (activityID: number, comment: string, status: string) => {
         try {
             const res = await fetch(`${BASE_URL}/${activityID}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-type': 'application/json',
                 },
-                body: JSON.stringify({comment}),
+                body: JSON.stringify({comment, status}),
             });
             const data = await res.json();
 
-            dispatch({type: Activity.UPDATE_ACTIVITY, payload: {id: data.activity.id, comment: data.activity.comment}});
+            dispatch({
+                type: Activity.UPDATE_ACTIVITY,
+                payload: {id: data.activity.id, comment: data.activity.comment, status: data.activity.status}
+            });
         } catch (err: any) {
             dispatch({type: Activity.REJECTED, payload: "Update Error!"});
         }

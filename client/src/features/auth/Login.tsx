@@ -1,46 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import Button from '../../layout/Button.tsx';
-import {
-    AuthContextType,
-    ToastContextType,
-    ToastMsgTypes,
-} from '../../types/types.ts';
-import {useNavigate} from 'react-router-dom';
+import {AuthContextType, ToastContextType, ToastMsgTypes,} from '../../types/types.ts';
 import {useToast} from "../../context/ToastContext.tsx";
 import {useAuth} from "../../context/AuthContext.tsx";
+import {useAuthentication} from "../../hooks/useAuthentication.ts";
 
 function Login() {
     const [email, setEmail] = useState('thomas@example.com');
     const [password, setPassword] = useState('123456');
 
-    const navigate = useNavigate();
     const {setToast} = useToast() as ToastContextType;
-    const {login, clearError, error, user, isAuthenticated, verifyToken} = useAuth() as AuthContextType;
+    const {login, clearError, error} = useAuth() as AuthContextType;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (email && password) login(email, password);
     };
 
+    useAuthentication();
+
     useEffect(() => {
-
-        verifyToken();
-
-        if (isAuthenticated && user.role === 'admin') {
-            navigate('/admin', {replace: true});
-            setToast('Welcome Admin', ToastMsgTypes.SUCCESS);
-        }
-
-        if (isAuthenticated && user.role === 'student') {
-            navigate('/student', {replace: true});
-            setToast('Welcome Student', ToastMsgTypes.SUCCESS);
-        }
-
         if (error) {
             setToast(error, ToastMsgTypes.ERROR);
             clearError();
         }
-    }, [isAuthenticated, navigate, user, error, setToast, clearError]);
+    }, [error]);
 
     return (
         <main className="flex h-[30rem] items-center justify-center md:h-[40rem]">
