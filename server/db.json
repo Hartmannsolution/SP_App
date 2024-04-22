@@ -14,7 +14,7 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
       "sp": 20,
       "comment": "<p><br></p>",
-      "status": "pending",
+      "status": "approved",
       "date": "2020-01-02",
       "id": "2"
     },
@@ -24,7 +24,7 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
       "sp": 20,
       "comment": "<p><br></p>",
-      "status": "rejected",
+      "status": "approved",
       "date": "2020-01-03"
     },
     {
@@ -32,7 +32,7 @@
       "name": "Activity 3",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
       "sp": 30,
-      "comment": "<p>Well Done!</p>",
+      "comment": "<p>Needs Work!</p>",
       "status": "rejected",
       "date": "2020-01-04"
     }

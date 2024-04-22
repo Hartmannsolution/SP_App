@@ -14,6 +14,7 @@ function Status() {
     const [comment, setComment] = useState("");
 
     const activityHandler = (activityId: number, comment: string) => {
+        console.log(selectedActivityId, activityId)
         setSelectedActivityId(selectedActivityId === activityId ? null : activityId);
         setComment(comment)
     }
@@ -29,9 +30,8 @@ function Status() {
                 <StatusHeader />
                 <StatusList activities={activities} activityHandler={activityHandler}/>
             </div>
-
             {
-                selectedActivityId !== null && <CommentBox comment={comment}/>
+                selectedActivityId !== null && comment !== "<p><br></p>" && <CommentBox comment={comment}/>
             }
         </div>)
 }

@@ -25,8 +25,8 @@ function CommentBox({comment = ""}: { comment: string }) {
         <>
             {comment &&
                 <div
-                    className="ml-2 border-4 self-end border-green-600 text-blue-700 w-auto bg-blue-50 md:text-lg md:mx-20">
-                    <div className="p-4 text-2xl">
+                    className="ml-2 border-4 self-end w-[345px] border-green-600 text-blue-700 md:w-1/2 bg-blue-50 md:text-lg md:mx-20">
+                    <div className="p-4 text-sm md:text-2xl">
                         {parse(copy.join(''))}
                     </div>
                 </div>
