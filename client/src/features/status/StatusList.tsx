@@ -1,9 +1,12 @@
 import React from 'react';
-import {ActivityType, ReviewStatus} from "../../types/types.ts";
+import {ActivityContextType, ReviewStatus} from "../../types/types.ts";
 import {FcHighPriority, FcOk} from "react-icons/fc";
+import {useActivity} from "../../context/ActivityContext.tsx";
 
 
-const StatusList = ({activityHandler, activities}: {activities: ActivityType[], activityHandler: (activityId: number, comment: string) => void }) => {
+const StatusList = ({activityHandler}: { activityHandler: (activityId: number, comment: string) => void }) => {
+
+    const {activities} = useActivity() as ActivityContextType;
 
     return (
         <>

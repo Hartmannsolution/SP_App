@@ -1,9 +1,12 @@
-import {ActivityType, ReviewStatus} from "../../types/types.ts";
+import {ActivityContextType, ReviewStatus} from "../../types/types.ts";
+import {useActivity} from "../../context/ActivityContext.tsx";
 
-function SPBox({activities = []}: { activities: ActivityType[]}) {
+function SPBox() {
+
+    const {activities} = useActivity() as ActivityContextType;
 
     function cleanUpNumber(num: number) {
-        if(num < 0) return "00";
+        if (num < 0) return "00";
         return num < 10 ? "0" + num : num;
     }
 
@@ -13,7 +16,9 @@ function SPBox({activities = []}: { activities: ActivityType[]}) {
 
     return (
         <div className="font-bold text-xl w-[12rem] text-center text-blue-800">
-            <p className="">SP: <span className="p-2 m-2"><span className={`${currentSp !== maxSp ? "text-red-600" : "text-green-700"} `}>{currentSp}</span> / {maxSp}</span></p>
+            <p className="">SP: <span className="p-2 m-2"><span
+                className={`${currentSp !== maxSp ? "text-red-600" : "text-green-700"} `}>{currentSp}</span> / {maxSp}</span>
+            </p>
         </div>
     )
 }
