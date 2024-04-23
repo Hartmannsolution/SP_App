@@ -1,1 +1,13 @@
 **/target/
+**/node_modules/
+**/bower_components/
+**/vendor/
+**/tmp/
+**/log/
+**/coverage/
+**/doc/
+**/docs/
+**/build/
+**/dist/
+
+
