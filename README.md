@@ -15,4 +15,23 @@ As a student I want to login in and see my current status and my future tasks
 As a teacher I want to see a list of students and their status and to extract a list of students, that needs attention
 
 
-# repo auto created
+1. På server
+```JSON
+   "start": "nodemon server.js",
+   "server": "json-server --watch ./db.json --port 3001"
+``` 
+
+2. På client
+```JSON
+    "dev": "vite"
+```
+
+3. Login
+
+**Student**
+email: joerg@example.com
+password: 123456
+
+**Admin**
+email: thomas@example.com
+password: 123456

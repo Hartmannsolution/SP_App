@@ -1,15 +1,3 @@
-**/target/
-**/node_modules/
-**/bower_components/
-**/vendor/
-**/tmp/
-**/log/
-**/coverage/
-**/doc/
-**/docs/
-**/build/
-**/dist/
-
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+iml,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+iml,node
 

@@ -1,0 +1,54 @@
+{
+  "activities": [
+    {
+      "id": "1",
+      "name": "Activity 1",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
+      "sp": 15,
+      "comment": "<p><strong>Hallo Comment! </strong></p><p><br></p><p><code>&nbsp;&nbsp;&nbsp;const modules = {</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toolbar: [</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bold', 'italic', 'underline', 'strike', 'blockquote'],</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{'list': 'ordered'}, {'list': 'bullet'}],</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['link','code'],</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['clean']</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</code></p><p><code>&nbsp;&nbsp;&nbsp;}</code></p><p><br></p><ol><li><strong>List1</strong></li><li><strong>List2</strong></li><li><strong>List3</strong></li></ol><p><br></p><ul><li><a href=\"https://tailwindcss.com/docs/list-style-position\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>anotherList</strong></a></li></ul>",
+      "status": "approved",
+      "date": "2020-01-01"
+    },
+    {
+      "name": "Activity 2",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
+      "sp": 20,
+      "comment": "<p><br></p>",
+      "status": "approved",
+      "date": "2020-01-02",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "Activity 4",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
+      "sp": 20,
+      "comment": "<p><br></p>",
+      "status": "approved",
+      "date": "2020-01-03"
+    },
+    {
+      "id": "4",
+      "name": "Activity 3",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin nibh. Egestas dui id ornare arcu odio ut sem. Fringilla phasellus faucibus scelerisque eleifend. Lectus mauris ultrices eros in. Ultrices in iaculis nunc sed augue lacus viverra. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. ",
+      "sp": 30,
+      "comment": "<p>Needs Work!</p>",
+      "status": "rejected",
+      "date": "2020-01-04"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "joerg@example.com",
+      "password": "123456",
+      "role": "student"
+    },
+    {
+      "id": "2",
+      "email": "thomas@example.com",
+      "password": "123456",
+      "role": "admin"
+    }
+  ]
+}
