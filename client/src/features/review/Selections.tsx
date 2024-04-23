@@ -19,7 +19,7 @@ const session_options = [
     {value: 'session 3', label: 'session 3', id: 'session'},
 ];
 
-function Selection() {
+function Selections() {
     return (
         <div className="flex flex-col items-center gap-2 md:gap-4">
             <Selector options={session_options}/>
@@ -29,4 +29,4 @@ function Selection() {
     );
 }
 
-export default Selection;
+export default Selections;

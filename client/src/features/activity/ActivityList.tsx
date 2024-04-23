@@ -1,24 +1,10 @@
 import ActivityItem from './ActivityItem.tsx';
 import React, { useState } from 'react';
-import { ActivityContextType, ToastContextType } from '../../types/types.ts';
-import Loader from '../../layout/Loader.tsx';
-import {useActivity} from '../../context/ActivityContext.tsx';
-import {useToast} from "../../context/ToastContext.tsx";
+import {ActivityType} from "../../types/types.ts";
 
-function ActivityList() {
+
+function ActivityList({ activities }: { activities: ActivityType[]}) {
   const [curOpen, setCurOpen] = useState<number | null>(null);
-
-  const { activities, isLoading, error, clearError } = useActivity() as ActivityContextType;
-  const { setToast } = useToast() as ToastContextType;
-
-  if (error) {
-    setToast(error, 'error');
-    clearError();
-  }
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <>

@@ -5,7 +5,7 @@ import ProtectedRoute from './features/auth/ProtectedRoute.tsx';
 import AppLayout from './layout/AppLayout.tsx';
 import Review from './pages/Review.tsx';
 import CSV from './pages/CSV.tsx';
-import Activities from './pages/Activities.tsx';
+import Activity from './pages/Activity.tsx';
 import Status from './pages/Status.tsx';
 import Login from './features/auth/Login.tsx';
 import Toast from './layout/Toast.tsx';
@@ -54,7 +54,7 @@ function App() {
                 }
               >
                 <Route index element={<Navigate replace to="activities" />} />
-                <Route path="activities" element={<Activities />} />
+                <Route path="activities" element={<Activity />} />
                 <Route path="status" element={<Status />} />
               </Route>
               <Route path="*" element={<PageNotFound/>} />
