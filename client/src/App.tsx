@@ -12,6 +12,7 @@ import Toast from './layout/Toast.tsx';
 import {ToastProvider} from "./context/ToastContext.tsx";
 import {ActivityProvider} from "./context/ActivityContext.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
+import PageNotFound from "./pages/PageNotFound.tsx";
 
 const student = {
   email: 'jorg@mail.com',
@@ -56,7 +57,7 @@ function App() {
                 <Route path="activities" element={<Activities />} />
                 <Route path="status" element={<Status />} />
               </Route>
-              <Route path="*" element={<h1>Not Found</h1>} />
+              <Route path="*" element={<PageNotFound/>} />
             </Routes>
             <Toast />
             <Footer />

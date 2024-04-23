@@ -32,8 +32,9 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
     }
 
     return (
-        <>
-            <p className="col-span-1 row-start-1 pl-2 max-w-32 text-sm text-gray-950 font-bold md:text-xl">Desc:</p>
+        <div
+            className="grid grid-cols-5 gap-y-4 grid-rows-[auto_auto_auto_auto_auto] w-[22rem] border-b-4 border-t-4 border-white text-xl text-gray-700 md:text-3xl md:w-[50rem]">
+            <p className="col-span-1 row-start-1 pl-2 max-w-32 text-sm text-gray-950 font-bold md:text-xl ">Desc:</p>
             <p className="col-span-1 row-start-2 pl-2 self-center text-sm max-w-32 text-gray-950 font-bold md:text-xl">SP:</p>
             <p className="col-span-1 row-start-3 pl-2 max-w-32 text-sm text-gray-950 font-bold md:text-xl">Comment:</p>
 
@@ -48,17 +49,17 @@ function ReviewBox({activity, onOpen}: AccordionBoxProps) {
             </div>
             <div className="col-start-2 col-span-3 row-start-5 place-self-center">
                 <div className="flex flex-row gap-2">
-                <button
-                    className="h-10 w-[70px] md:h-14 md:w-24 bg-green-600 rounded-xl text-blue-50 font-bold text-sm md:text-lg"
-                    onClick={() => clickHandler(0)}>Approve
-                </button>
-                <button
-                    className="h-10 w-[70px] md:h-14 md:w-24 bg-red-600 rounded-xl text-blue-50 font-bold text-sm md:text-lg"
-                    onClick={() => clickHandler(1)}>Reject
-                </button>
+                    <button
+                        className="h-10 w-[70px] md:h-14 md:w-24 bg-green-600 rounded-xl text-blue-50 font-bold text-sm md:text-lg"
+                        onClick={() => clickHandler(0)}>Approve
+                    </button>
+                    <button
+                        className="h-10 w-[70px] md:h-14 md:w-24 bg-red-600 rounded-xl text-blue-50 font-bold text-sm md:text-lg"
+                        onClick={() => clickHandler(1)}>Reject
+                    </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 
 }
