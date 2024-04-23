@@ -5,6 +5,7 @@ import {useToast} from "../../context/ToastContext.tsx";
 import {useAuth} from "../../context/AuthContext.tsx";
 import {useAuthentication} from "../../hooks/useAuthentication.ts";
 
+
 function Login() {
     const [email, setEmail] = useState('thomas@example.com');
     const [password, setPassword] = useState('123456');
